@@ -22,5 +22,19 @@ namespace LIMS.Models
         public DbSet<Subject> Subjects { get; set; }
 
         public DbSet<SubjectType> SubjectTypes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<LabAsset>().
+                HasMany(a => a.LabAssetTags).
+                WithMany(t => t.LabAssets).
+                Map(m => { 
+                    m.MapLeftKey("LabAssetId"); 
+                    m.MapRightKey("LabAssetTagId"); 
+                    m.ToTable("AssetTags"); 
+                });
+        }
     }
 }

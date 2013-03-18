@@ -19,9 +19,11 @@ namespace LIMS.Models
         [DataType(DataType.DateTime)]
         public DateTime Created { get; set; }
 
-        [Display(Name = "Asset type")]
-        public int LabAssetTypeId { get; set; }
-        public virtual LabAssetType Type { get; set; }
+        //[Display(Name = "Asset type")]
+        //public int LabAssetTypeId { get; set; }
+        //public virtual LabAssetType Type { get; set; }
+
+        public virtual List<LabAssetTag> LabAssetTags { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }

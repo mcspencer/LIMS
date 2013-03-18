@@ -173,7 +173,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\LabAsset.cs" />
+    <Compile Include="Models\LabAssetTag.cs" />
     <Compile Include="Models\LabAssetType.cs" />
     <Compile Include="Models\LabDataStore.cs" />
     <Compile Include="Models\LIMSContext.cs" />
