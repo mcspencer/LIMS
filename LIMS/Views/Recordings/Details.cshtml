@@ -1,0 +1,22 @@
+﻿@model LIMS.Models.Recording
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Recording</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreationTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreationTime)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RecordingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

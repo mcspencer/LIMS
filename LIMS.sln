@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIMS", "LIMS\LIMS.csproj", "{68876553-02FC-46DB-9C0F-79746F9DB557}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIMS.Tests", "LIMS.Tests\LIMS.Tests.csproj", "{DE263C3C-FBB0-4F47-A8E3-AE4928C67C4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68876553-02FC-46DB-9C0F-79746F9DB557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68876553-02FC-46DB-9C0F-79746F9DB557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68876553-02FC-46DB-9C0F-79746F9DB557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68876553-02FC-46DB-9C0F-79746F9DB557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE263C3C-FBB0-4F47-A8E3-AE4928C67C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE263C3C-FBB0-4F47-A8E3-AE4928C67C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE263C3C-FBB0-4F47-A8E3-AE4928C67C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE263C3C-FBB0-4F47-A8E3-AE4928C67C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
