@@ -25,5 +25,7 @@ namespace LIMS.Models
         public int LabAssetId { get; set; }
         public virtual LabAsset LabAsset { get; set; }
 
+        public DateTime Created { get; set; }
+
     }
 }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<LIMS.Models.LabAsset>
+
+@{
+    ViewBag.Title = "Assets";
+}
+
+<h2>Assets</h2>
+
+@if(Request.IsAuthenticated)
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+<table class="assets">
+    <tr>
+        <th class="attention">▼</th>
+        <th class="asset">
+            Assets
+        </th>
+        <th class="tags">
+
+        </th>
+        <th class="created">Created</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="attention">
+            @if(item.NeedsAttention)
+            {
+                <span class="attention">!</span>
+            }
+            else
+            {
+                <span class="ok")>&nbsp;</span>
+            }
+        </td>
+        <td class="asset">
+            <span class="name">@Html.ActionLink(@item.Name, "Edit", new { id=item.LabAssetId })</span>
+            <span class="description">@Html.DisplayFor(modelItem => item.Description)</span>
+        </td>
+        <td class="tags">
+            @foreach (var tag in item.LabAssetTags)
+            {
+                @Html.ActionLink(tag.Name, "Index", new {withTag=tag.LabAssetTagId}, new { @class="tag"})
+            }
+        </td>
+        <td class="created">
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+    </tr>
+}
+
+</table>

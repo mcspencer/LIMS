@@ -16,6 +16,11 @@ namespace LIMS.Models
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
-        public virtual List<LabAsset> LabAssets { get; set; }
+        public virtual ICollection<LabAsset> LabAssets { get; set; }
+
+        public LabAssetTag()
+        {
+            LabAssets = new HashSet<LabAsset>();
+        }
     }
 }

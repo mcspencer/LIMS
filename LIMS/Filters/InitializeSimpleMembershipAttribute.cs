@@ -25,11 +25,12 @@ namespace LIMS.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                //Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<LIMSContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new LIMSContext())
                     {
                         if (!context.Database.Exists())
                         {

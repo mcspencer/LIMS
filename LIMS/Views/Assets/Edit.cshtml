@@ -1,0 +1,80 @@
+﻿@model LIMS.Models.LabAsset
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@if(Request.IsAuthenticated){
+    <h2>Edit @Model.Name</h2>
+    
+}
+else
+{
+    <h2>@Model.Name</h2>
+}
+
+@using(Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>LabAsset</legend>
+
+        @Html.HiddenFor(model => model.LabAssetId)
+        @Html.HiddenFor(model => model.Created)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayOrEditFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayOrEditFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LabAssetTags)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("tagList")
+        </div>
+
+        @if(!Request.IsAuthenticated)
+        {
+            <span class="asset_attention">Needs Attention!</span>
+        }
+        else
+        {
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NeedsAttention)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayOrEditFor(model => model.NeedsAttention)
+            @Html.ValidationMessageFor(model => model.NeedsAttention)
+        </div>
+        }
+
+        @if(Request.IsAuthenticated)
+        {
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+        }
+    </fieldset>
+
+}
+        
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

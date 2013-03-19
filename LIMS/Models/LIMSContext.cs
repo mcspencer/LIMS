@@ -17,11 +17,17 @@ namespace LIMS.Models
         {
         }
 
+        public DbSet<UserProfile> UserProfiles { get; set; }
+
         public DbSet<Recording> Recordings { get; set; }
 
         public DbSet<Subject> Subjects { get; set; }
 
         public DbSet<SubjectType> SubjectTypes { get; set; }
+
+        public DbSet<LabAsset> LabAssets { get; set; }
+
+        public DbSet<LabAssetTag> LabAssetTags { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
