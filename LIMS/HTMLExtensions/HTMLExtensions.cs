@@ -21,5 +21,17 @@ namespace LIMS.HTMLExtensions
                 return html.DisplayFor(expression);
             }
         }
+
+        public static MvcHtmlString DisplayOrEdit(this HtmlHelper html, string expression)
+        {
+            if (html.ViewContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return html.Editor(expression);
+            }
+            else
+            {
+                return html.Display(expression);
+            }
+        }
     }
 }

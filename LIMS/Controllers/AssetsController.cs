@@ -55,9 +55,15 @@ namespace LIMS.Controllers
             labasset.Created = DateTime.Now;
             if (ModelState.IsValid)
             {
-                UpdateAssetTagsFromString(labasset, tagList);
+                ICollection<LabAssetTag> tags = ParseAssetTagsFromString(tagList);
 
+                // Attach the labasset object to the context.
                 db.LabAssets.Add(labasset);
+
+                // Add tags to its list
+                labasset.AddTags(tags);
+                                
+                // Save the changes
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -89,8 +95,12 @@ namespace LIMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                UpdateAssetTagsFromString(labasset, tagList);
+                ICollection<LabAssetTag> tags = ParseAssetTagsFromString(tagList);
+                
+                // Reattach the labasset object to the context
                 db.Entry(labasset).State = EntityState.Modified;
+                labasset.AddTags(tags);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -133,8 +143,15 @@ namespace LIMS.Controllers
             ViewBag.tagList = asset.GetTagString();
         }
 
-        private void UpdateAssetTagsFromString(LabAsset asset, string tagList)
+        /// <summary>
+        /// Parses a string of comma separated tags and attaches them to tags stored in the database, creating new tags when necessary
+        /// </summary>
+        /// <param name="tagList"></param>
+        /// <returns></returns>
+        private ICollection<LabAssetTag> ParseAssetTagsFromString(string tagList)
         {
+            ICollection<LabAssetTag> tags = new List<LabAssetTag>();
+
             string[] tagtoks = tagList.Split(',');
             foreach (string tag in tagtoks)
             {
@@ -143,9 +160,12 @@ namespace LIMS.Controllers
                 {
                     assetTag = new LabAssetTag();
                     assetTag.Name = tag.Trim();
+                    db.LabAssetTags.Add(assetTag);
+                    db.SaveChanges();
                 }
-                asset.LabAssetTags.Add(assetTag);
+                tags.Add(assetTag);
             }
+            return tags;
         }
     }
 }

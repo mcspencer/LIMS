@@ -60,8 +60,12 @@ namespace LIMS.Models
             return tags.ToString();
         }
 
-        public void AddTags(string tags)
+        public void AddTags(ICollection<LabAssetTag> tags)
         {
+            foreach (LabAssetTag tag in tags)
+            {
+                LabAssetTags.Add(tag);
+            }
         }
     }
 }

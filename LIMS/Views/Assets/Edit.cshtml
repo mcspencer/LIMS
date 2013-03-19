@@ -42,14 +42,14 @@ else
             @Html.LabelFor(model => model.LabAssetTags)
         </div>
         <div class="editor-field">
-            @Html.TextBox("tagList")
+            @Html.DisplayOrEdit("tagList")
         </div>
 
-        @if(!Request.IsAuthenticated)
+        @if(!Request.IsAuthenticated && Model.NeedsAttention)
         {
             <span class="asset_attention">Needs Attention!</span>
         }
-        else
+        else if(Request.IsAuthenticated)
         {
         <div class="editor-label">
             @Html.LabelFor(model => model.NeedsAttention)
