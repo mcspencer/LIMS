@@ -25,6 +25,8 @@ namespace LIMS.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+
+        public virtual ICollection<UserLabAsset> UserLabAssets { get; set; }
     }
 
     public class RegisterExternalLoginModel

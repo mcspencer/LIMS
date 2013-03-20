@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using LIMS.Models;
 using WebMatrix.WebData;
+using LIMS.Filters;
 
 namespace LIMS.Controllers
 {
+    [InitializeSimpleMembership]
     public class SubjectsController : Controller
     {
         private LIMSContext db = new LIMSContext();

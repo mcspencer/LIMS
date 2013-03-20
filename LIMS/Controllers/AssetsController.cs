@@ -95,13 +95,20 @@ namespace LIMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                ICollection<LabAssetTag> tags = ParseAssetTagsFromString(tagList);
-                
-                // Reattach the labasset object to the context
+                // Reattach the labasset object to the context and save its internal data
                 db.Entry(labasset).State = EntityState.Modified;
-                labasset.AddTags(tags);
-                
                 db.SaveChanges();
+
+                // Reload the entity from the database, including its list of tags
+                labasset = db.LabAssets.Include(la => la.LabAssetTags).Where(la => (la.LabAssetId == labasset.LabAssetId)).FirstOrDefault();
+                    
+                // Add all the tags on the form to the list
+                ICollection<LabAssetTag> tags = ParseAssetTagsFromString(tagList);
+                labasset.AddTags(tags);
+
+                // Save the changes to the entity and the list
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(labasset);

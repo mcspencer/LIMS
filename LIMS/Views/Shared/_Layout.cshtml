@@ -21,8 +21,11 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            @if(false)
+                            {
                             <li>@Html.ActionLink("Recordings", "Index", "Recordings")</li>
                             <li>@Html.ActionLink("Subjects", "Index", "Subjects")</li>
+                            }
                             <li>@Html.ActionLink("Inventory", "Index", "Assets")</li>
                         </ul>
                     </nav>

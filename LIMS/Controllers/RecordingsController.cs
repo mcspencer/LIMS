@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LIMS.Models;
+using LIMS.Filters;
 
 namespace LIMS.Controllers
 {
+    [InitializeSimpleMembership]
     public class RecordingsController : Controller
     {
         private LIMSContext db = new LIMSContext();
